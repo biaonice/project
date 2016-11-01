@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<div class="transfusion">
+  <aside class="first" id="chartFirst">
+  </aside>
+  <div class="">
+    <div class="">
+      <nav>
+        <span>操作时间</span>
+        <span>操作类型</span>
+      </nav>
+    </div>
+  </div>
+</div>
+<script>
+
+//函数属性
+//length    arguments.length 实参的个数  arguments.callee.length 期望传入的实参个数。
+//prototype   这个属性是指一个对象的引用 即 原型对象
+// call() apply() 方法
+// bind() 除了第一个实参之外　传入bind()的实参也会绑定至ｔｈｉｓ，
+
+var sum=function(x,y){return x,y};
+var succ=sum.bind(null,1);
+succ(2);
+function f(y,z){return this.x+y+z};
+var g=f.bind({x:1},2);
+g(3);
+
+function bind(){
+  if(f.bind) return f.bind(0);
+  else return function(){
+    return f.apply(o,arguments);
+  }
+}
+
+
+if(!function.prototype.bind){
+  Function.prototype.bind=function(o){
+    var self=this,boundArgs=arguments;
+    return function(){
+      var args=[],i;
+      for(i=1;i<boundArgs.length;i++) args.push(boundArgs[i]);
+        for(i=0;i<arguments.length;i++) args.push(arguments[i]);
+          return self.apply(o,args);
+    };
+  };
+}
+
+instanceof instanceof instanceof
+
+//toString()方法　（大部分是返回函数源码）
+
+var map=Array.prototype.map?function(a,f){return a.map(f);}:function(a,f){var reuslts=[];for(var i=0;len=a.length;i<len;i++){
+  if(i in a) results[i]=f.call(null,a[i],i,a);
+  }
+  return results;
+}
+
+
+function not(f){
+  return function(){
+    var result=f.apply(this,arguments);
+    return !result;
+  };
+}
+var even=function(x){
+  return x%2===0;
+};
+var odd=not(even);
+[1,2,3,4,5].every(odd);
+
+
+function compose(f,g){
+  return function(){
+    return f.call(this,g.apply(this,arguments));
+  };
+}
+var square=function(x){return x*x;}
+var sum=function=function(x,y){return x+y;}
+var squareofsum=compose(square,sum);
+squareofsum(2,3);
+
+
+//partial() memoize()两个重要的高阶函数
+
+function array(a,n){return Array.prototype.slice.call(a,n||0);}
+//实现一个工具函数将类数组对象（或对象）转换为真正的数组。
+// 在后面的示例代码中用到这个方法将ａｒｇｕｍｅｎｔｓ对象转换为真正的数组
+
+
+//这个函数的实参传递至左侧
+function partialLeft(f){
+  var args=arguments;
+  return function(){
+    var a=array(args,1);
+    a=a.concat(array(arguments));
+    return f.apply(this,a);
+  };
+}
+
+//这个函数的实参传递至右侧
+function partialRight(f){
+  var args=arguments;
+  return function(){
+    var a=array(arguments);
+    a=a.concat(array(args,1));
+    return f.apply(this,a);
+  };
+}
+
+
+//这个函数的实参被用作模板
+//实参列表中的ｕｎｄｅｆｉｎｅｄ值都被填充
+function partial(f){
+    var args=arguments;
+    return function(){
+        var a=array(args,1);
+        var i=0,j=0;
+        for(;i<a.length;i++){
+            if(a[i]===undefined) a[i]=arguments[j++];
+        }
+        a=a.concat(array(arguments,j));
+        return f.apply(this,a);
+    };
+}
+
+function memorize(f){         //记忆函数　本质是牺牲空间复杂度来换取更优的时间复杂度
+    var cache={};
+    return function(){
+        var key=arguments.length+Array.prototype.join.call(arguments,",");
+        if(key in cahce) return cache[key];
+        else return cache[key]=f.apply(this,arguments);
+    };
+}
+function gcd(a,b){
+    var t;
+    if(a<b) t=b,b=a,a=t;
+    while(b!=0) t=b,b=a%b,a=t;
+    return a;
+}
+var gcdmeno=menorize(gcd);
+gcdmemo(85,187);
+
+var factorial=memorize(function(n){
+    return (n<=1)?1:n*factorial(n-1);
+});
+factorial(6);
+
+
+
+//原型对象是类的核心
+
+function range(from,to){
+    var r=inherit(range.methods);
+    r.from=from;
+    r.to=to;
+    return r;
+}
+
+range.methods={
+    includes:function(x){
+        return this.form<=x && x<=this.to;
+    },
+    foreach:function(f){
+        for(var x=Math.ceil(this.from);x<=this.to;x++) f(x);
+    },
+    toString:function(){return "("+this.from+"..."+this.to+")";}
+};
+// 任何类的方法都可以通过ｔｈｉｓ的这种基本用法来读取对象的属性
+var r=range(1,3);
+r.includes(2);
+r.foreach(console.log);
+console.log(r);
+
+
+
+//普通函数　首字母小写　
+//构造函数　首字母大写　且调用必须用ｎｅｗ
+
+//每个ｊｓ函数的方法都自动拥有一个ｐｒｏｔｏｔｙｐｅ属性。这个属性的值是一个对象，这个对象包含唯一一个不可枚举属性ｃｏｎｓｔｒｕｃｔｏｒ。constructor属性的值是一个函数对象。
+var F=function(){}
+var p=F.prototype;
+var c=p.constructor;
+c===F; //TRUE  //对于任意函数 F.prototype.constructor==F;
+
+
+// js定义类　
+// 第一步：先定义一个构造函数，并初始化新对象的实例属性
+// 第二步：给构造函数的prototype对象定义实例的方法
+// 第三步：给构造函数定义类字段和类属性
+function defineClass(constructor,
+    methods,
+    sstatics)
+{
+    if(methods) extend(constructor.prototype,methods);
+    if(statics) extend(constructor,statics);
+    return constructor;
+}
+
+var SimpleRange=
+    defineClass(function(f,t){this.f=f;this.t=t;},
+    {
+        includes:function(x){return this.f<=x && x<=this.t;},
+        toString:function(){return this.f+"..."+this.t;}
+    },
+    {upto:function(t){return new SimpleRange(o,t)} });
+
+
+
+function Complex(real,imaginary){
+    if(isNaN(real)||isNaN(imaginary))
+        throw new TypeError();
+    this.r=real;
+    this.i=imaginary;
+}
+Complex.prototype.add=function(that){
+    returnb new Complex(this.r+that.r,this.i+this.i);
+};
+
+
+Complex.parse=function(s){
+    try{
+        var m=Conplex._format.exec(s);
+        return new Complex(prseFloat(m[1]),parseFloat(m[2]));
+    }catch(x){
+        throw new TypeError("can")
+    }
+}
+//解决方案１：使用构造函数的名字而不是构造函数本身作为类标识符。
+
+
+function type(o){
+    var t,c,n;
+    if(o===null) return "null";
+    if(o!==o) return "NaN";
+    if((c=classof(o))!=="Object") return c;
+    if((t=typeof o)!=="Object") return t;
+    if(o,constructor && typeof o.constructor==="function" && (n=o.constructor.getName())) return n;
+    return "Object";
+}
+function classof(o){
+    return Object.prototype.toString.call.slice(8,-1);
+};
+Function.prototype.getName=function(){
+    if("name" in this) return this.name;
+    return this.name=this.toString().match(/function\s*([^(]*)\(/)[1];
+}
+
+
+
+
+//像鸭子一样走路、游泳。并且嘎嘎叫的鸟就是鸭子　鸭子辨型
+//9-5
+function quacks(o){
+    for(var i=1;i<arguments.length;i++){
+        var arg=arguments[i];
+        switch(typeof arg){
+            case 'string':
+                if(typeof o[arg]!=="function") return false;
+                continue;
+            case 'function':
+                arg=arg.prototype;
+            case 'object':
+                for(var m in arg){
+                    if(typeof arg[m]!=="function") continue;
+                    if(typeof o[m]!=="function") return false;
+                }
+        }
+    }
+    return true;
+}
+
+
+//集合类
+
+
+//子类
+function NonNullSet(){
+    Set.apply(this,arguments);
+}
+NonNullSet.prototype=inherit(Set.prototype);
+NonNullSet.prototype.constructor=NonNullSet;
+
+NonNullSet.prototype.add=function(){
+    for(var i=0;i<arguments.length;i++){
+        if(arguments[i]==null)
+            throw new Error("can't"); 
+    }
+        return Set.prototype.add.apply(this,arguments);
+};
+//包装后
+var NonNullSet=(function(){
+    var superclass=Set;
+    return superclass.extend({
+        function(){supercalss.apply(this,arguments);},
+        {
+            add:function(){
+                for(var i=0;i<arguments.length;i++)
+                    if(arguments[i]==null)
+                        throw new Error("Can't add null or undefined");
+                    return superclass.prototype.add.apply(this,arguments);
+            }
+        });
+    }
+}());
+
+
+function filteredSetSubclass(superclass,filter){
+    var constructor=function(){
+        superclass.apply(this,arguments);
+    };
+    var proto=constructor.prototype=inherit(superclass.prototype);
+    proto.constructor=constructor;
+    proto.add=function(){
+        for(var i=0;i<arguments.length;i++){
+            var v=arguments[i];
+            if(!filter(v)) throw ("value "+v+"rejected by filter");
+        }
+        supercalss.proatotype.add.apply(this,arguments);
+    };
+    return constructor;
+}
+
+//类工厂和方法链
+function filteredSetSubClass(supercalss,filter){
+    var constructor=function(){
+        supercalss.apply(this,arguments);
+    };
+    var proto=constructor.prototype=inherit(superclass.prototype);proto.constructor=constructor;
+    proto.add=function(){
+        for(var i=0;i<arguments.length;i++){
+            var v=arguments[i];
+            if(!filter(v)) throw("value"+ v +"rejected by filter");
+        }
+        supercalss.prototype.add.apply(this,arguments);
+    };
+    return constructor;
+}
+
+//组合优于继承　　面向对象的设计原则中
+
+
+//使用组合代替继承的集合的实现
+var FilteredSet=Set.extend(
+    function FilteredSet(set,filter){
+        this.set=set;
+        this.filter=filter;
+    },
+    {   
+        add:function(){
+            if(this.filter){
+                for(var i=0;i<arguments.length;i++){
+                    var v=arguments[i];
+                    if(!this.filter(v))
+                        throw new Error("FilteredSet:value"+v+"rejected by filter");
+                }
+            }
+            this.set.add.apply(this.set,arguments);
+            return this;
+        },
+        remove:function(){
+            this.set.remove.apply(this.set,arguments);
+            return this;
+        },
+        contains:function(v){return this.set.contains(v);},
+        size:function(){return this.set.size();},
+        foreach:function(f,c){this.set.foreach(f,c);}
+    });
+
+
+
+//定时器应用函数
+function invoke(f,start,interval,end){
+    if(!start)start=0;
+    if(arguments.length<=2)
+        setTimeout(f,start);
+    else{
+        setTimeout(repeat,start);
+        function repeat(){
+            var h=setInterval(f,interval);
+            if(end)setTimeout(function(){clearInterval(h);},end);
+        }
+    }
+}
+
+//提取URL的搜索字符串中的参数
+function urlArgs(){
+    var args={};
+    var query=location.search.substring(1);
+    var pairs=query.split("&");
+    for(var i=0;i<pairs.length;i++){
+        var pos=pairs[i].indexOf('=');
+        if(pos==-1) continue;
+        var name=pairs[i].substring(0,pos);
+        var value=pairs[i]substring(pos+1);
+        value=decodeURIComponent(value);
+        args[name]=value;
+    }
+    return args;
+}
+
+
+location="#top";
+//跳转到文档顶部
+location.search="?page"+(pagenum+1); //跳转到下一页
+
+//闭包和引用
+function Counter(start){
+    var count =start;
+    return{
+        increment:function(){
+            count++;
+        },
+        get:function(){
+            return count;
+        }
+    }
+}
+var foo=Counter(4);
+foo.increment();
+foo.get();
+
+for(var i=0;i<10;i++){
+    (function(e){
+         setTimeout(Function(){
+        console.log(i);
+    },1000);
+     })(i);
+}
+
+Array.prototype.slice.call(arguments);
+
+function foo(){
+    bar.apply(null,arguments);
+}
+function bar(a,b,c){
+
+}
+
+
+//工厂模式
+function Bar(){
+    var value=1;
+    return {
+        method:function(){
+            return value;
+        }
+    }
+}
+Bar.prototype={
+    foo:function(){}
+};
+new Bar();
+Bar();
+function Foo(){
+    var obj={};
+    obj.value='blub';
+    var private=2;
+    obj.someMethos=function(value){
+        this.value=value;
+    }
+    obj.getPrivate=function(){
+        return private;
+    }
+    return obj;
+}
+//作用域和命名空间
+function test(){
+    for(var i=0;i<10;i++){
+    }
+    console.log(i);
+}
+
+
+
+
+//使用严格等于操作符，如需类型转换，应该在比较之前显示转换类型，而不是是用语言本身复杂的强制转换规则
+　
+
+//为了检测一个对象的类型，建议使用object.prototype.toString方法
+var sum=function(){
+}
+(function(){
+})();
+
+
+
+
+
+//应该避免使用 setInterval，因为它的定时执行不会被 JavaScript 阻塞。
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+  </body>
+</html>

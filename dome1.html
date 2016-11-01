@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+</body>
+
+<script>
+    function Person(name,age,job){
+        var o=new Object();
+        o.name=name;
+        o.age = age;
+        o.job=job;
+        o.sayName=function(){
+            alert(this.name)
+        };
+        return o;
+    }
+
+    function SpecialArray(){
+        var values=new Array();
+        values.push.apply(values,arguments);
+        values.toPipedString=function(){
+            return this.join("|");
+        };
+        return values;
+    }
+
+    //借用构造函数 ——在子类型构造函数的内部调用超类型的构造函数
+
+    function SuperType(){
+        this.colors=['red','blue','green'];
+    }
+    function SubType(){
+            SuperType.call(this);
+        }
+        var instance1=new SubType();
+        instance1.colors.push('black');
+        alert(instance1.colors);
+        var instance2=new SubType();
+        alert(instance2.colors);
+    }
+
+
+    window.onload =function(){
+        var friend=new Person("Nicholas",29,"Software");
+        friend.sayName();
+
+        var colors=new SpecialArray("red","blue","green");
+        alert(colors.toPipedString());
+
+
+        function SuperType(){
+            this.propertyIsEnumerable =true;
+        }
+        SuperType.prototype.getSuperValue=function(){
+            return this.property;
+        };
+        function SubType(){
+            this.subproperty=false;
+        }
+        SubType.prototype = new SuperType();
+        SubType.prototype.getSubValue=function(){
+            return this.subproperty;
+        };
+        var instance=new SubType();
+        alert(instance.getSuperValue());
+        //这里property是一个实例属性，而getSuperValue()则是一个原型方法
+
+        //object对传入其中的对象执行了一次浅复制
+        var person={
+            name:"Nicholas";
+            friends:['Shelby','Court','Van']
+        };
+        var anotherPerson=object(person);
+        anotherPerson.name='Greg';
+        anotherPerson.friends.push("Barbie");
+        alert(person.friends);
+
+
+//寄生式继承
+        function createAother(original){
+            var clone=object(original);
+            clone.sayHi=function(){
+                alert("hi");
+            };
+            return clone;
+        }
+        var anotherPerson=createAother(person);
+        anotherPerson.sayHi();
+        //使用寄生式继承来为对象添加函数，会由于不能做到函数复用而降低效率；这一点与构造函数模式类似。
+
+
+//寄生组合式继承
+        function SuperType(name){
+            this.name=name;
+            this.colors["red","blue","green"];
+        }
+        SuperType.prototype.sayName=function(){
+            alert(this.name);
+        };
+        function SubType(name,age){
+            SuperType.call(this,name);
+            this.age = age;
+        }
+        SubType.prototype=new SuperType();
+        SubType.prototype.constructor = SubType;
+        SubType.prototype.sayAge=function(){
+            alert(this.age);
+        }
+    }
+
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html id="html">
+  <head>
+    <meta charset="utf-8">
+    <title>管理系统</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initaal-scale=1" />
+    <meta name="name" content="text/html;chartset-UTF-8" />
+    <link rel="shortcut icon" href="image/favicon.ico" media="screen" title="no title" type="image/x-icon" />
+    <link rel="stylesheet" href="less/commen.css" media="screen" title="no title">
+    <link rel="stylesheet" href="lib/need/laydate.css" media="screen" title="no title">
+  </head>
+  <body>
+
+<script type="text/javascript">
+  less.src="lib/less.min.js";
+  $(function(){
+    window.areaOther=$('[area=other]');
+    window.areaRight=$('[area=right]');
+    window.areaCache=$('[aera=cache]');
+    window.regionAlert=$('[area=alert] [region=alert]');
+    var socket=io.connect('http://localhost:9092');
+    window.alert_close=function(){
+      $('[area=alert]').fadeOut(function(){
+        $(this).find('[region=alert]').html('');
+      })
+    };
+    window.alert_show=function(result){
+      $('[area=alert]').fadeIn();
+      $('[area=alert] [region=alert]').html(result);
+    };
+    window.get_login=function(){
+      var element=$('[area=login]');
+      var param={
+        'url':element.attr('load')
+      };
+      $.get(param.url,function(result){
+        element.html(result);
+      },'html');
+      $('[arae] [include]').html();
+    };
+    window.index_init=function(){
+      $('[area][include]').each(function(){
+        var elemetn=$(this);
+        var param={
+          'url':element.attr('include')
+        };
+        element.html(apon.indexLoading);
+        $.get(param.url,function(reuslt){
+          element.html(result);
+        },'html');
+    });
+    $('[area=login]').fadeOut();
+  };
+  socket.on('serverpush',function(result){
+    if($.isFunction(window.message_push)){
+      window.message_push(result);
+    }
+  })
+  window.get_login();
+  window.banBackSpace=function(){
+    if(event.keyCode=8 && event.srcElement.tagName !='input' && event.srcElement.type !='text'){
+      evemt.returnValue=false;
+      return ;
+    }
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

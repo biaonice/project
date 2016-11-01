@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #clock{
+            font:16px/1.5 "微软雅黑";
+            color:#fff;
+            width:300px;
+            height:200px;
+            margin:20px auto;
+            background:#333;
+        }
+        span{
+            width:80px;
+            line-height:2;
+            color:#000;
+            background:#fbfbfb;
+            border:2px solid #b4b4b4;
+            margin:0 10px;
+            padding:0 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="clock"><span></span>时<span></span>分<span></span>秒</div>
+
+
+<script>
+    window.onLoad=function(){
+        var block=document.getElementById('block');
+        var ospan=blovk.getElementsByTagName('span');
+        setInterval(getTimes,1000);
+        getTimes();
+        function getTimes(){
+            var oDate=new Date();
+            var
+        }
+    }
+</script>
+</body>
+</html>

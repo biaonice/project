@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    <input type="text"><input type="button" value="判断" id="conmond"></p>
+</body>
+
+<script>
+    window.onload=function(){
+        var num=document.getElementsByTagName('input')[0];
+        var conmond=document.getElementById('conmond');
+        conmond.onclick = function(){
+               alert("这个数是"+num.value.length+"数");
+        }
+    }
+</script>
+</html>

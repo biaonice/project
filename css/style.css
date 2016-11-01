@@ -1,0 +1,26 @@
+
+.main{
+  margin: 0 auto;
+  width:568px;
+  height:400px;
+}
+.main fieldset{
+  border: none;
+}
+.main label{
+  margin-right:10px;
+}
+.formLogin input{
+  height: 1.5em;
+  padding: 0.3em 0.5em;
+}
+.formLogin button{
+  background-color: green;
+  border: none;
+  width:187px;
+  height: 2.5em;
+}
+.formLogin button:hover{
+    background-color: blue;
+}
+

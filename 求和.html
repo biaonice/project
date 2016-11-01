@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    <input type="text" id="num1"> +
+    <input type="text" id="num2"> =<span id="sum"></span>
+</p>
+<input type="button" value="求和" id="sum1">
+</body>
+
+<script>
+    window.onload=function(){
+        var num1=document.getElementById('num1');
+        var num2=document.getElementById('num2');
+        var sum=document.getElementById('sum');
+        var sum1=document.getElementById('sum1');
+        sum1.onclick=function(){
+            if (num1.value=="" || num2.value=="" || isNaN(parseInt(num1.value)+parseInt(num2.value))){
+                alert('请输入数字');
+            }else{
+                var numSum=parseInt(num1.value)+parseInt(num2.value);
+                sum.innerHTML=numSum;
+            }
+        }
+    }
+</script>
+</html>

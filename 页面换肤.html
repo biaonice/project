@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/red.css">
+    <style>
+        #main{
+            color:#fff;
+            margin:40px auto;
+            width:960px;
+            height:auto;
+        }
+        #onav li{
+            float:left;
+            margin-right:10px;
+            margin-bottom:20px;
+        }
+        #odiv{
+            margin-top:60px;
+            clear:both;
+        }
+        #odiv li{
+            float:left;
+            display:inline-block;
+            line-height:40px;
+            padding:0 20px;
+            border:1px solid #999;
+        }
+        #odiv li a{
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+       <nav id="onav">
+           <li style="background:red" id="red">红</li>
+           <li style="background:green" id="green">绿</li>
+           <li style="background:blue" id="blue">蓝</li>
+       </nav>
+        <div id="odiv">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">旅游</a></li>
+            <li><a href="#">运动</a></li>
+            <li><a href="#">购物</a></li>
+            <li><a href="#">赏图</a></li>
+            <li><a href="#">美景</a></li>
+        </div>
+    </div>
+
+    <script>
+        window.onload=function(){
+            var skip=document.getElementById('onav').getElementsByTagName('li');
+            var olink=document.getElementsByTagName('link')[0];
+            for (var i=0;i<skip.length;i++){
+                skip[i].onclick=function(){
+                    olink['href']="css/"+this.id+'.css';
+                }
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>

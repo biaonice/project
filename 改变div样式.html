@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #obox{
+            width:400px;
+            height:600px;
+            margin:10px auto;
+        }
+        #obox input{
+            float:left;
+            margin-right:10px;
+        }
+        #odiv{
+            clear:both;
+            width:100px;
+            height:100px;
+            border:1px solid #999;
+            background:black;
+        }
+    </style>
+</head>
+<body>
+    <div id="obox">
+        <input type="button" value="变色">
+        <input type="button" value="变宽">
+        <input type="button" value="变高">
+        <input type="button" value="还原">
+        <input type="button" value="隐藏">
+        <input type="button" value="缩放">
+        <div id="odiv"></div>
+    </div>
+
+
+    <script>
+        function changeStyle(elem,attr,value){
+            elem.style[attr]=value;
+        }
+        window.onload=function(){
+            var obox=document.getElementsByTagName('input');
+            var odiv=document.getElementById('odiv');
+            var value=['red','400px','200px','none','block'];
+            var attr=['background','height','width','display','display'];
+            for (var i=0;i<obox.length;i++){
+                obox[i].index =i;
+                obox[i].onclick=function(){
+                    this.index==obox.length-1&&(odiv.style.cssText="");
+                    changeStyle(odiv,attr[this.index],value[this.index]);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

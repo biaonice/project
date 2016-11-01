@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #odiv{
+            width:200px;
+            height:200px;
+            margin:40px auto;
+        }
+        #odiv input{
+            margin-top:10px;
+            display:block;
+        }
+    </style>
+</head>
+<body>
+<div id="odiv">
+    <input type="text" id="input1">
+    <input type="text" id="input2">
+    <input type="button" value="传参" id="btn1">
+</div>
+<script>
+    window.onload=function(){
+        var input1=document.getElementById('input1');
+        var input2=document.getElementById('input2');
+        var btn=document.getElementById('btn1');
+        btn.onclick = function(){
+            alert(input1.value);
+            alert(input2.value);
+        }
+    }
+</script>
+</body>
+</html>
