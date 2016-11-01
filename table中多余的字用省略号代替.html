@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+
+    <style>
+        .main{
+            display:table;
+            border:1px solid #00aa00;
+            width:6em;
+            table-layout:fixed;
+        }
+        .change{
+            display:block;
+            border:1px dotted #999999;
+            width:6em;
+            height:auto;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+        .change:hover{
+            white-space:pre-line;
+            text-overflow:inherit;
+            overflow:visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+            <span class="change">sdfgsdfgsdfgsdfgsdfsdf</span>
+            <span>sdfgsdfgsdfgsdfgsdfsdf</span>
+    </div>
+</body>
+</html>
