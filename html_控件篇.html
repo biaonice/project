@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="" novalidate id="form1">
+        <p><input type="text" value="文本区域" readonly disabled maxlength="20" autofocus></p>
+        <p><input type="password" size="16" multiple placeholder="密码"></p>
+        <p><input type="checkbox"></p>
+        <p><input type="radio"></p>
+
+        <p><input list="browsers"></p>
+        <datalist id="browsers">
+            <option value="Internet Explorer">
+            <option value="Firefox">
+            <option value="Chrome">
+            <option value="Opera">
+            <option value="Safari">
+        </datalist>
+    </form>
+    <p><input type="text" form="form1"></p>
+        <ul>
+            <h3>input属性:</h3>
+            <li>readonly属性规定输入字段为只读</li>
+            <li>disabled属性输入字段为禁用的(不可用，不可点击，不可提交)</li>
+            <li>size属性规定输入字段的尺寸(以字符记)</li>
+            <li>maxlength属性规定输入字段允许的最大长度</li>
+            <h3>html5新增属性</h3>
+            <li style="color: red;">autocomplete属性规定表单或输入字段是否应该自动完成</li>
+            <li>novalidate属性属于form属性 如果设置，则novalidate规定在提交表单时不对表单数据进行验证</li>
+            <li>autofocus属性 如果设置，则规定当前页面加载时input元素应该自动获得焦点</li>
+            <li>form属性规定input元素所属的一个或多个表单</li>
+            <li style="color:green;">formaction属性规定当前提交表单时处理该输入控件的文件的url，覆盖form元素的action属性 适用于type="submit/image"</li>
+            <li style="color:green;">formenctype属性规定当表单数据提交至服务器时如何对其进行编码(针对method="post"的表单)覆盖<form>元素的enctype属性</li>
+            <li style="color:green;">formmethod属性 定义用以向action URL发送表单数据的HTTP方法 覆盖method方法</li>
+            <li  style="color:green;">formnovalidate如果设置不对input元素进行验证 覆盖novalidate 适用于type=“submit”</li>
+            <li>formtarget 规定的名称或关键词指示提交表单后在何处显示接受到的响应 覆盖target属性</li>
+            <li>height和width规定input元素的高度和宽度 仅用于type="image"</li>
+            <li>list属性应用的datalist元素中包含了input元素的预定义选项</li>
+            <li>min和max属性 规定元素的最小值和最大值</li>
+            <li>multiple属性 如果设置则允许用户在input元素中输入一个以上的值</li>
+            <li>pattern属性用于检查input元素值的正则表达式</li>
+            <li>placeholder属性规定用以描述输入字段预期值的提示，该提示会在用户输入值之前显示在输入字段中</li>
+            <li>required属性 如果设置，则规定在提交表单之前必须填写输入字段</li>
+            <li>step属性规定input元素的合法数字间隔 数字步数eg:step="3"合法数字为： 3，6，9，0等等</li>
+        </ul>
+
+    <select name="select" id="select">
+        <optgroup label="直辖市"></optgroup>
+        <option value="北京">北京</option>
+        <option value="北京">北京</option>
+        <option value="北京">北京</option>
+    </select>
+
+    <form action="">
+        <p><input type="text" placeholder="文本"></p>
+        <p><input type="password" placeholder="密码"></p>
+        <p><input type="submit"></p>
+        <p><input type="button" value="按钮"></p>
+        <p><input type="reset"></p>
+        <p><input type="image" src="image/bg.jpg"></p>
+        <p><input type="time"></p>
+        <p><input type="date"></p>
+        <p><input type="file"></p>
+        <p><input type="radio"></p>
+        <p><input type="checkbox" checked></p>
+        <p><input type="hidden"></p>
+        <p><input type="search" placeholder="搜索框"></p>
+        <p><input type="range"></p>
+        <p><input type="number"></p>
+        <p><input type="email"></p>
+    </form>
+    <form action="">
+        <label for="file" style="border:1px solid #333;background:#eee;padding:0.2em 0.5em;">文件</label>
+        <input type="file" id="file" hidden>
+        <textarea name="文本框" id="" cols="30" rows="10"></textarea>
+        <fieldset style="margin:20px 40px">
+            <legend>性别</legend>
+            <input type="radio">单选
+            <input type="checkbox">多选
+        </fieldset>
+    </form>
+</body>
+</html>
