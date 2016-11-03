@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css属性</title>
+    <style>
+        .div1{
+            width:200px;
+            height:200px;
+            border:1px solid #cd0200;
+            border-bottom-style:hidden; /*用于解决边框冲突*/
+            outline:#00ff00 dashed thick; /* 绘制元素轮廓 */
+            border-bottom-left-radius:2em; /* 圆角表框 */
+          /*  -webkit-border-image:url(image/123.png); -moz-border-image:url(image/123.png); -o-border-image:url(image/123.png); border-image:url(image/123.png);*/
+            box-shadow:10px 10px 5px #999989;/* 向方框添加一个或多个阴影 */
+
+            font-size-adjust:0.58;
+            font-strecth:narrower;
+            quotes:"'";
+
+            column-rule: 3px outset #ff00ff; /* 多列属性 */
+
+            /* css定位属性 */
+            bottom:5px;
+            clip:rect(100,100,100,100); /*剪裁绝对定位元素*/
+            cursor:pointer;/* 设置光标显示样式*/
+            vertical-align:middle; /*垂直对齐方式*/
+            visibility:inherit; /*设置元素是否可见*/
+            z-index:100;    /* 设置元素的堆叠顺序 */
+
+        }
+        .div1:after{
+            content:"("attr(href)")";
+        }
+        .div1:before{
+            content:"("attr(href)")";
+        }
+
+    </style>
+</head>
+<body>
+<div class="div1">hahahhaksdhfajks</div>
+</body>
+</html>
