@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background:#ddd;
+        }
+        #dome{
+            -webkit-animation:rotate 4s 0s linear infinite;
+            margin:400px auto;
+            width:20px;
+            height:20px;
+            background:yellowgreen;
+            transform: rotate(135deg) skew(25deg,25deg);
+            animation: rotate alternate 10s 0s ease-in-out infinite;
+            text-align:center;
+            box-shadow:
+                    0 0 0 20px #655,
+                    0 0 0 30px deeppink,
+                    0 0 0 40px #655,
+                    0 0 0 50px deeppink,
+                    0 0 0 60px #655,
+                    0 0 0 70px deeppink,
+                    0 0 0 80px #655,
+                    0 0 0 90px deeppink,
+                    0 0 0 100px #655,
+                    0 0 0 110px deeppink,
+                    0 0 0 120px #655,
+                    0 0 0 130px deeppink,
+                    0 0 0 140px #655,
+                    0 0 0 150px deeppink,
+                    0 0 0 160px #655,
+                    0 0 0 170px deeppink,
+                    0 0 0 180px #655,
+                    0 0 0 190px deeppink,
+                    0 0 0 200px #655;
+            }
+        #dome span{
+            display:inline-block;
+            width:8px;
+            height:8px;
+            margin:6px 5px;
+            background:deeppink;
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotateX(0deg) scale(0); }
+            10% {
+                transform: rotateY(90deg) scale(0.1); }
+            20% {
+                transform: rotateZ(180deg) scale(0.2); }
+            30% {
+                transform: rotateX(270deg) scale(0.3); }
+            40% {
+                transform: rotateY(360deg) scale(0.4); }
+            50% {
+                transform: rotateZ(0deg) scale(0.5); }
+            60% {
+                transform: rotateX(90deg) scale(0.6); }
+            70% {
+                transform: rotateY(180deg) scale(.7); }
+            80% {
+                transform: rotateZ(270deg) scale(0.8); }
+            90% {
+                transform: rotateX(360deg) scale(0.9); }
+            100% {
+                transform: rotateY(360deg) scale(1); }
+        }
+        #dome1{
+            width:200px;
+            height:200px;
+            background:#333;
+            -webkit-transition:width 2s 1s; -moz-transition:width 2s; -ms-transition:width 2s; -o-transition:width 2s; transition:width 2s 1s;
+        }
+        #dome1:hover{
+            width:600px;
+        }
+
+
+        #dome1{
+            width:200px;
+            height:200px;
+           background:repeating-linear-gradient(45deg,red 0,red 1em,transparent 0,transparent 2em, #58a 0,#58a 3em,transparent 0,transparent 4em);
+        }
+        #dome1:hover{
+            width:600px;
+        }
+
+        #dome1{
+            text-align:center;
+            line-height:40px;
+            font-size:20px;
+            font-weight:700;
+            font-family:"Lucida Sans Unicode";
+            color:#333;
+            width:100px;
+            height:40px;
+            /*border-radius:100% 0 0 0;*/
+            border-radius:5px;
+            border:1px solid rgba(128,255,0,.1);
+            box-shadow:0 .3em 1px rgba(128,240,200);
+
+            /*border-radius:100% 0 0 100% / 50%;*/
+            background:rgba(128,255,0,.4);
+        }
+        .newspaper{
+            display:none;
+            padding:1em;
+            border:16px solid transparent;
+            border-image:16 repeating-linear-gradient(135deg,red 0,red 1em,transparent 0,transparent 2em, #58a 0,#58a 3em,transparent 0,transparent 4em);
+            width:600px;
+
+            -moz-column-rule:3px dashed #333;
+            -moz-column-count:3;
+            -moz-column-gap:30px;
+            -webkit-column-rule:3px dashed #333;
+            -webkit-column-count:3;
+            -webkit-column-gap:30px;
+        }
+        h2{
+            text-align:center;
+            -webkit-column-span:all;
+            column-span:all;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="dome"><span></span></div>
+
+    <!--<div id="dome1">Button</div>-->
+
+    <!--<div class="newspaper">-->
+        <!--<h2>呵呵哒</h2>-->
+        <!--人民网北京2月24日电 (记者 刘阳)国家发展改革委近日发出通知，决定自2月25日零时起将汽、柴油价格每吨分别提高300元和290元，折算到90号汽油和0号柴油（全国平均）每升零售价格分别提高0.22元和0.25元。-->
+
+        <!--此次国内成品油价格调整幅度，是按照现行国内成品油价格形成机制，根据国际市场油价变化情况确定的。去年11月16日国内成品油价格调整以来，受市场预期欧美经济复苏前景向好以及中东局势持续动荡等因素影响，国际市场原油价格先抑后扬，2月上旬WTI和布伦特原油期货价格再次回升至每桶95美元和115美元以上。虽然近两日价格有所回落，但国内油价挂钩的国际市场三种原油连续22个工作日移动平均价格上涨幅度已超过4%，达到国内成品油价格调整的边界条件。-->
+
+        <!--通知指出，这次成品油调价后，国家将按照已建立的补贴机制，继续对种粮农民、渔业（含远洋渔业）、林业、城市公交、农村道路客运（含岛际和农村水路客运）等给予补贴。同时，为保证市场物价基本稳定，防止连锁涨价，对与居民生活密切相关的铁路客运、城市公交、农村道路客运（含岛际和农村水路客运）价格不作调整。-->
+
+        <!--通知要求，中石油、中石化、中海油三大公司要组织好成品油生产和调运，保持合理库存，加强综合协调和应急调度，保障成品油供应。各级价格主管部门要加大市场监督检查力度，依法查处不执行国家价格政策，以及囤积居奇、造谣惑众、合谋涨价、搭车涨价等违法行为，维护正常市场秩序。-->
+    <!--</div>-->
+
+</body>
+</html>

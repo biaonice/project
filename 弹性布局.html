@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹性布局</title>
+    <style>
+        main{
+            background:yellowgreen;
+            display:flex;
+            width:400px;
+            height:400px;
+            flex-flow:column;
+        }
+        section{
+            background:lightgoldenrodyellow;
+        }
+        aside{
+            background:lawngreen;
+        }
+        footer{
+            background:#333;
+        }
+       #container > div {
+           width:400px;
+           height:auto;
+           border:1px solid yellowgreen;
+           box-shadow:0 3px 2px #666;
+           display: flex;
+           font-family: "Courier New", "Lucida Console", monospace;
+       }
+       #container > div > div {
+           width: 50px;
+           height: 50px;
+           background: linear-gradient(-45deg, #788cff, #b4c8ff);
+       }
+       #flex-start {
+           justify-content: flex-start;
+       }
+       #center {
+           justify-content: center;
+       }
+       #flex-end {
+           justify-content: flex-end;
+       }
+       #space-between {
+           justify-content: space-between;
+       }
+       #space-around {
+           justify-content: space-around;
+       }
+    </style>
+</head>
+<body>
+   <main>
+
+   </main>
+    <section>
+        <header></header>
+    </section>
+    <aside>
+
+    </aside>
+    <footer>
+
+    </footer>
+
+   <div id="container">
+       <p>justify-content: flex-start</p>
+       <div id="flex-start">
+           <div></div>
+           <div></div>
+           <div></div>
+       </div>
+
+       <p>justify-content: flex-end</p>
+       <div id="flex-end">
+           <div></div>
+           <div></div>
+           <div></div>
+       </div>
+       <p>justify-content: center</p>
+       <div id="center">
+           <div></div>
+           <div></div>
+           <div></div>
+       </div>
+       <p>justify-content: space-between</p>
+       <div id="space-between">
+           <div></div>
+           <div></div>
+           <div></div>
+       </div>
+
+       <p>justify-content: space-around</p>
+       <div id="space-around">
+           <div></div>
+           <div></div>
+           <div></div>
+       </div>
+   </div>
+</body>
+</html>
