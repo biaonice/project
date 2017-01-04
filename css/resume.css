@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0
+}
+
+address,caption,cite,code,dfn,th {
+    font-style: inherit;
+    font-weight: inherit
+}
+
+aside,figcaption,figure,figure img,footer,header,main,nav,section {
+    display: block
+}
+
+a img {
+    border: 0
+}
+
+ol,ul {
+    list-style-type: none
+}
+
+html {
+    background: #fff;
+    font-size: 14px
+}
+body {
+    color: #3b3c40;
+    background-color: #eaeff2;
+    font-family: 'Open Sans',Arial,sans-serif;
+    line-height: 1.5
+}
+/****************************** header ********************************/
+[content=container]{
+    width:80em;
+    margin:0 auto;
+    border:1px dashed yellowgreen;
+    min-width:780px;
+}
+[content=container] >h3 >span{
+    display:none;
+}
+[content=container] > header{
+    border-bottom:1px dashed #217ac0;
+}
+[content=container] > header > [img]{
+    display:inline-block;
+    border-radius:50%;
+    width:15em;
+    height:15em;
+    background:#333;
+}
+[content=container] > header > [info]{
+    display:inline-block;
+    width:58em;
+    padding:1.5em 0  1em 6em;
+    vertical-align:top;
+    /*border:1px solid #334;*/
+}
+[content=container] > header > [info] > div{
+    display:inline-block;
+    line-height:2em;
+    margin:.5em 0;
+    margin-right:6em;
+}
+[content=container] > header > [info] > div > span{
+    display:inline-block;
+    background:linear-gradient(#58a 50%,yellowgreen 50%);
+    width:8em;
+}
+[content=container] > header > [info] > div >input{
+    border:none;
+    border-bottom:1px solid #333;
+    background:inherit;
+    outline:none;
+    padding:.1em .5em;
+}
+/****************************** main ********************************/
+[content=container] > main{
+    margin-top:2em;
+}
+[content=container] > main > h3 > span{
+    display:none;
+}
+[content=container] > main > div >div{
+    display:inline-block;
+    width:14em;
+    height:2em;
+    margin-right:5em;
+    line-height:2em;
+    text-align:center;
+    border-radius:.5em;
+    font-family:微软雅黑;
+    font-weight:700;
+    color:cadetblue;
+    transform:skewX(135deg);
+    text-shadow:.15em .15em .08em #969a32;
+    background-image:linear-gradient(to bottom,yellowgreen,yellow);
+    box-shadow:0 .4em .3em yellowgreen;
+}
+[content=container] > main > div > div > div[btn]> span{
+    display:inline-block;
+    transform:skewX(45deg);
+}
+
+

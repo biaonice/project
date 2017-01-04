@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex2</title>
+    <style>
+        .container{
+            margin:0 10%;
+            display:flex;
+            min-height:100vh;
+            flex-direction:column;
+        }
+        .header{
+            height:10em;
+            background:yellowgreen;
+            flex:1;
+        }
+        .main{
+            display:flex;
+            flex:1;
+        }
+        .left{
+            background:#58a;
+        }
+        .center{
+            background:#93d;
+            flex:60%;
+        }
+        .right{
+            background:#6fa;
+        }
+        .left,.right{
+            flex:0 0 20%;
+        }
+        .center,.left,.right{
+            height:30em;
+        }
+
+        .footer{
+            height:10em;
+            background:#7ab;
+            flex:1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header"></div>
+        <div class="main">
+            <div class="left"></div>
+            <div class="center"></div>
+            <div class="right"></div>
+        </div>
+        <div class="footer"></div>
+    </div>
+
+    <script>
+        window.onload=function(){
+            var people=[1,1,4,76];
+        }
+
+        var person={
+            toLocaleString:function(){
+                return "Nikolaos";
+            },
+            toString:function(){
+                return "Nicholas";
+            }
+        };
+        var person1={
+            toLocaleString:function(){
+                return "Grigorios";
+            },
+            toString:function(){
+                return "Greg";
+            }
+        };
+        var people=[person, person1];
+        console.log(people);
+        console.log(people.toString());
+        console.log(people.toLocaleString());
+
+        console.log(people.join("**"));
+
+        //堆栈   push()可传入多值  pop()返回数组最后一个值
+        //队列   push() shift()从数组中取得第一项
+        //反队列 pop() 和 unshift()在数组的前段添加任意多个项并返回数组的新长度
+
+
+        //重排序方法
+        //reverse()反转数组项的顺序  sort()可以跟函数。
+        //eg:
+        function compare(value1,value2){
+            return value2-value1;
+        }
+        var Array=[1,2,3,54,6,8,9,63,0,8,6];
+        Array.sort(compare);
+        console.log(Array);
+
+
+        //操作方法
+        //concat()方法可以基于当前数组中的所有项创建一个新数组；创建一个数组副本，并向这个副本中传入其他值或数据
+        //slice()截取数组 接收两个参数 第一个参数起始位置，第二个参数结束位置
+        //splice()删除 插入 替换 数组 后面第一个参数开始位置 第二个参数删除个数 其余参数要插入的项
+
+        //位置方法
+        // indexOf() lastIndexOf()接收2个参数第一个要查找的项（可选）和表示起点位置的索引。前者从开头开始查找后者从结尾开始查
+
+        //迭代方法 every() some() filter() map() forEach()
+
+        //归并方法 reduce() reduceRight() 循环遍历数组 传给其的函数接收4个参数：前一个值，当前值，项的索引，数组对象
+        //rg:
+        var values=[1,2,3,4,5];
+        var sum=values.reduce(function(prev,cur,index,array){
+            return prev+cur;
+        });
+        alert(sum);
+
+        //Date类型
+        //Date.parse() Date.UTC();
+
+
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+            .main{
+                border:1px solid #333;
+                display:flex;
+                align-items:flex-start;
+            }
+            .mian-figure{
+                margin-right:1em;
+            }
+            .main-body{
+                flex:1;
+            }
+        .InputAddOn{
+            margin-top:2em;
+            height:1.3em;
+            display:flex;
+        }
+        .InputAddOn-field{
+            flex:1;
+            height:1.5em;
+            border:1px solid #999;
+            padding:.15em 0.3em;
+            border-left:none;
+            border-right:none;
+            outline:none;
+        }
+        .InputAddOn-item{
+            background:linear-gradient(#5588aa 50%,#6677bb 50%);
+            padding:0 1em;
+            border:1px solid #999;
+            height:1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <img class="mian-figure" src="image/12.png" width="40px" height="40px">
+        <p class="mian-body">有时，页面内容太少，无法占满一屏的高度，底栏就会抬高到页面的中间。这时可以采用Flex布局，让底栏总是出现在页面的底部。</p>
+    </div>
+
+    <div class="InputAddOn">
+        <span class="InputAddOn-item">1</span>
+        <input class="InputAddOn-field">
+        <span class="InputAddOn-item">2</span>
+    </div>
+</body>
+</html>
